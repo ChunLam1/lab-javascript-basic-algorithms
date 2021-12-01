@@ -17,6 +17,7 @@ function longestName(driver,conductor){
 }
 
 longestName(hacker1, hacker2);
+
 // Iteration 3: Loops
 
 let uppercasedName = hacker1.toUpperCase()
@@ -26,27 +27,70 @@ function nameSplit(name){
     for(let i = 0; i < name.length; i++){
         array.push(name[i]);
     }
-    console.log(array.join(" "))
+    console.log(array.join(" "));
 }
-nameSplit(uppercasedName)
+nameSplit(uppercasedName);
 
 function reverseName(name){
     let array=[];
     for(let i = 0; i < name.length; i++){
         array.unshift(name[i]);
     }
-    console.log(array.join(''))
+    console.log(array.join(''));
 }
-reverseName(hacker1)
+reverseName(hacker1);
 
 function lexicographic(driver,navigator){
-   if( driver.charCodeAt(0) > navigator.charCodeAt(0) ){
-       console.log("The driver's name goes first.")
-   }else if( driver.charCodeAt(0) < navigator.charCodeAt(0)){
-       console.log("Yo, the navigator goes first definitely.")
-   }else{ 
-       console.log("What?! You both have the same name")
-   }
+
+    for(let i = 0; i < driver.length; i++){
+        for(let j = 0; j < navigator.length; j++){
+            if( driver.charCodeAt(i) > navigator.charCodeAt(j) ){
+               return "The driver's name goes first.";
+            }else if( driver.charCodeAt(i) < navigator.charCodeAt(j)){
+                return "Yo, the navigator goes first definitely.";
+            }else{ 
+                return "What?! You both have the same name";
+            };
+        };
+    };
+};
+
+console.log(lexicographic(hacker1,hacker2));
+
+
+/*BONUS 1*/ 
+let paragraph = "Mauris ultrices eu est nec cursus. Praesent imperdiet risus vehicula nunc laoreet aliquet. Phasellus suscipit, metus a bibendum feugiat, urna eros rhoncus leo, vel condimentum metus dui eu justo. Fusce quis massa diam. Sed vel mi nisl. Phasellus vestibulum dignissim odio vitae rutrum. Maecenas placerat velit quis molestie auctor.Vestibulum varius molestie lorem vel aliquam. Cras tellus metus, efficitur a tincidunt et, sodales non velit. Integer eu quam pulvinar, sagittis ex ac, rhoncus ligula. Sed fringilla neque at lectus volutpat eleifend. Integer luctus iaculis elit, sit amet convallis dolor ornare nec. Nulla eget ligula quis nunc laoreet aliquam. Nulla facilisi. Donec ac nisi turpis. Integer lobortis nulla ac imperdiet venenatis. Suspendisse accumsan orci tempus scelerisque molestie.Quisque et pulvinar lacus. Donec sagittis vulputate urna id ornare. Duis tempor maximus diam, eu malesuada justo bibendum sit amet. In non leo sed lacus elementum elementum. Pellentesque in dolor a nibh lacinia rhoncus. Fusce venenatis et urna sit amet semper. Nulla elementum porttitor pellentesque. In hac habitasse platea dictumst."
+
+console.log(`the paragraph has ` + paragraph.split(' ').length + ' ' + 'words');
+function countEt(text){
+    let arrayParagraph = paragraph.split(' ');
+    let count = 0;
+    for(let i = 0; i <arrayParagraph.length; i++){
+        if(arrayParagraph[i].includes("et")){
+            count++
+        }
+    }
+    return `there are ${count} words wich contain "et"`;
 }
 
-lexicographic(hacker1,hacker2)
+console.log(countEt(paragraph))
+
+/*BONUS 2*/ 
+function reverseString(name){
+    let array=[];
+    for(let i = 0; i < name.length; i++){
+        array.unshift(name[i]);
+    }
+    return array.join('');
+}
+function palindromeCheck(sentence){
+    let str = sentence.split(" ").join("")
+    let sentenceReversed = reverseString(str);
+    if(str === sentenceReversed){
+        return 'palindrome';
+    }else{
+        return 'pas palindrome';
+    }
+}
+
+console.log(palindromeCheck("raced car"));
