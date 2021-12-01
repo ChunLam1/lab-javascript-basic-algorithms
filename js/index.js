@@ -28,6 +28,25 @@ function nameSplit(name){
     }
     console.log(array.join(" "))
 }
-
-
 nameSplit(uppercasedName)
+
+function reverseName(name){
+    let array=[];
+    for(let i = 0; i < name.length; i++){
+        array.unshift(name[i]);
+    }
+    console.log(array.join(''))
+}
+reverseName(hacker1)
+
+function lexicographic(driver,navigator){
+   if( driver.charCodeAt(0) > navigator.charCodeAt(0) ){
+       console.log("The driver's name goes first.")
+   }else if( driver.charCodeAt(0) < navigator.charCodeAt(0)){
+       console.log("Yo, the navigator goes first definitely.")
+   }else{ 
+       console.log("What?! You both have the same name")
+   }
+}
+
+lexicographic(hacker1,hacker2)
